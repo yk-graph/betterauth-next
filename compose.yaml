@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  front:
+    image: betterauth_next:latest
+    container_name: front
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    env_file:
+      - .env
+    volumes:
+      - .:/front                    # ホストのfrontディレクトリ全体をマウント
+      - /front/node_modules         # 匿名ボリュームでコンテナ内のnode_modulesを保護
+      - /front/.next                # Next.jsビルドキャッシュも保護
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - betterauth_next_net
+
+  db:
+    image: mysql:8.4.8
+    platform: linux/amd64
+    container_name: db
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    networks:
+      - betterauth_next_net
+
+volumes:
+  mysql:
+
+networks:
+  betterauth_next_net:
+    driver: bridge              # 新しいネットワークを作成する場合
