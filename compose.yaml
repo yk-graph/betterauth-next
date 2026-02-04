@@ -12,6 +12,7 @@ services:
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
       RESEND_API_KEY: ${RESEND_API_KEY}
+      UPLOADTHING_TOKEN: ${UPLOADTHING_TOKEN}
     env_file:
       - .env
     volumes:

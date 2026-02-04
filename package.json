@@ -12,6 +12,7 @@
     "@base-ui/react": "^1.1.0",
     "@hookform/resolvers": "^5.2.2",
     "@react-email/components": "1.0.6",
+    "@uploadthing/react": "^7.3.3",
     "better-auth": "^1.4.18",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -33,6 +34,7 @@
     "resend": "^6.9.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
+    "uploadthing": "^7.7.4",
     "vaul": "^1.1.2",
     "zod": "^4.3.6"
   },
