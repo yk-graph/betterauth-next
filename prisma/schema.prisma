@@ -1,3 +1,7 @@
+// Tips: Better Authが必要とするテーブル（user, session, account, verification）
+// テーブル名・カラム名はauth.tsの設定でカスタマイズ可能
+// FYI: https://www.better-auth.com/docs/concepts/database
+
 generator client {
   provider = "prisma-client"
   output   = "../lib/generated/prisma"
