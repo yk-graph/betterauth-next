@@ -19,7 +19,6 @@ export function SignUpForm() {
   const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -28,7 +27,7 @@ export function SignUpForm() {
 
   const onSubmit = async (data: SignUpInput) => {
     const { error } = await authClient.signUp.email({
-      name: data.name,
+      name: '', // Tips: better-authにおいてsignUpメソッドのnameプロパティは必須でありオプショナルにすることは出来ない → 一時的に空文字を渡す
       email: data.email,
       password: data.password,
     })
@@ -51,18 +50,6 @@ export function SignUpForm() {
       <CardContent>
         <form id="signup-form" onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <FieldGroup>
-            <Controller
-              name="name"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid} className="gap-1">
-                  <FieldLabel>Name</FieldLabel>
-                  <Input {...field} autoComplete="name" aria-invalid={fieldState.invalid} />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                </Field>
-              )}
-            />
-
             <Controller
               name="email"
               control={form.control}

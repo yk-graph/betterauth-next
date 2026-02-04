@@ -1,6 +1,6 @@
 import * as z from 'zod'
 
-import { emailField, nameField, passwordField } from './fields'
+import { emailField, passwordField } from './fields'
 
 // サインイン用バリデーションスキーマ
 export const signInSchema = z.object({
@@ -13,7 +13,7 @@ export type SignInInput = z.infer<typeof signInSchema>
 // サインアップ用バリデーションスキーマ
 export const signUpSchema = z
   .object({
-    name: nameField,
+    name: z.string().optional(), // Tips: better-authにおいてsignUpメソッドのnameプロパティは必須でありオプショナルにすることは出来ないため、ここではバリデーションを行わない
     email: emailField,
     password: passwordField,
     confirmPassword: z.string().min(1, 'パスワード（確認）を入力してください'),
