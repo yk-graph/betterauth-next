@@ -13,8 +13,8 @@ services:
       - .env
     volumes:
       - .:/front # ホストのfrontディレクトリ全体をマウント
-      - /front/node_modules # 匿名ボリュームでコンテナ内のnode_modulesを保護
-      - /front/.next # Next.jsビルドキャッシュも保護
+      - front_node_modules:/front/node_modules # 名前付きボリュームでnode_modulesを保護
+      - front_next:/front/.next # 名前付きボリュームでNext.jsビルドキャッシュを保護
     restart: always
     ports:
       - 3000:3000
@@ -37,6 +37,8 @@ services:
 
 volumes:
   mysql:
+  front_node_modules:
+  front_next:
 
 networks:
   betterauth_next_net:
