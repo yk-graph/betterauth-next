@@ -8,14 +8,13 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      ENV_VARIABLE: ${ENV_VARIABLE}
-      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+      DATABASE_URL: ${DATABASE_URL}
     env_file:
       - .env
     volumes:
-      - .:/front                    # ホストのfrontディレクトリ全体をマウント
-      - /front/node_modules         # 匿名ボリュームでコンテナ内のnode_modulesを保護
-      - /front/.next                # Next.jsビルドキャッシュも保護
+      - .:/front # ホストのfrontディレクトリ全体をマウント
+      - /front/node_modules # 匿名ボリュームでコンテナ内のnode_modulesを保護
+      - /front/.next # Next.jsビルドキャッシュも保護
     restart: always
     ports:
       - 3000:3000
@@ -31,8 +30,8 @@ services:
     volumes:
       - mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     networks:
       - betterauth_next_net
 
@@ -41,4 +40,4 @@ volumes:
 
 networks:
   betterauth_next_net:
-    driver: bridge              # 新しいネットワークを作成する場合
+    driver: bridge # 新しいネットワークを作成する場合
