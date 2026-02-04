@@ -1,7 +1,7 @@
 'use client'
 
-import { Trash } from 'lucide-react'
 import Image from 'next/image'
+import { Trash } from 'lucide-react'
 import { useState } from 'react'
 
 import { OurFileRouter } from '@/app/api/uploadthing/core'

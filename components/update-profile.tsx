@@ -36,6 +36,8 @@ export function UpdateProfile({ name, email, image }: ProfileFormProps) {
   })
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    console.log(data)
+
     try {
       await authClient.updateUser(
         {
@@ -97,6 +99,8 @@ export function UpdateProfile({ name, email, image }: ProfileFormProps) {
                     endpoint="imageUploader"
                     defaultUrl={field.value ?? null}
                     onChange={(url) => {
+                      console.log('✅️url', url)
+
                       field.onChange(url)
                     }}
                   />
