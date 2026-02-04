@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -15,7 +14,6 @@ import { authClient } from '@/lib/better-auth/client'
 import { signUpSchema, type SignUpInput } from '@/lib/zod'
 
 export function SignUpForm() {
-  const router = useRouter()
   const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -37,8 +35,7 @@ export function SignUpForm() {
       return
     }
 
-    toast.success('アカウントを作成しました')
-    router.push('/')
+    toast.success('確認メールを送信しました。メールを確認してください。')
   }
 
   return (
