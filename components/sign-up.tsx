@@ -11,7 +11,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Spinner } from '@/components/ui/spinner'
-import { authClient } from '@/lib/better-auth'
+import { authClient } from '@/lib/better-auth/client'
 import { signUpSchema, type SignUpInput } from '@/lib/zod'
 
 export function SignUpForm() {

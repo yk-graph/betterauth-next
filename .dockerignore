@@ -8,6 +8,9 @@ yarn-error.log*
 .next
 out
 
+# Prisma Client（コンテナ内で生成するため）
+lib/generated
+
 # テスト
 coverage
 .nyc_output

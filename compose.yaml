@@ -15,6 +15,7 @@ services:
       - .:/front # ホストのfrontディレクトリ全体をマウント
       - front_node_modules:/front/node_modules # 名前付きボリュームでnode_modulesを保護
       - front_next:/front/.next # 名前付きボリュームでNext.jsビルドキャッシュを保護
+      - front_prisma_generated:/front/lib/generated # 名前付きボリュームでPrismaクライアントを保護
     restart: always
     ports:
       - 3000:3000
@@ -39,6 +40,7 @@ volumes:
   mysql:
   front_node_modules:
   front_next:
+  front_prisma_generated:
 
 networks:
   betterauth_next_net:

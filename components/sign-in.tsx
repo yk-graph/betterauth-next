@@ -12,7 +12,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
-import { authClient } from '@/lib/better-auth'
+import { authClient } from '@/lib/better-auth/client'
 import { signInSchema, type SignInInput } from '@/lib/zod'
 
 export function SignInForm() {
@@ -30,29 +30,27 @@ export function SignInForm() {
       email: data.email,
       password: data.password,
     })
-
     if (error) {
       toast.error(error.message ?? 'サインインに失敗しました')
       return
     }
-
     toast.success('サインインしました')
     router.push('/')
   }
 
-  const signInWithGoogle = async () => {
-    await authClient.signIn.social({
-      provider: 'google',
-      callbackURL: '/',
-    })
-  }
+  // const signInWithGoogle = async () => {
+  //   await authClient.signIn.social({
+  //     provider: 'google',
+  //     callbackURL: '/',
+  //   })
+  // }
 
-  const signInWithGithub = async () => {
-    await authClient.signIn.social({
-      provider: 'github',
-      callbackURL: '/',
-    })
-  }
+  // const signInWithGithub = async () => {
+  //   await authClient.signIn.social({
+  //     provider: 'github',
+  //     callbackURL: '/',
+  //   })
+  // }
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -113,11 +111,11 @@ export function SignInForm() {
         </div>
 
         <div className="flex flex-col w-full gap-3">
-          <Button type="button" className="text-sm cursor-pointer" onClick={signInWithGoogle}>
+          <Button type="button" className="text-sm cursor-pointer" onClick={() => {}}>
             Continue with Google
           </Button>
 
-          <Button type="button" className="text-sm cursor-pointer" onClick={signInWithGithub}>
+          <Button type="button" className="text-sm cursor-pointer" onClick={() => {}}>
             Continue with Github
           </Button>
         </div>
