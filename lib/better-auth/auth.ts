@@ -13,6 +13,21 @@ export const auth = betterAuth({
     enabled: true,
   },
 
+  socialProviders: {
+    google: {
+      prompt: 'select_account',
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    },
+  },
+
+  // 同じメールアドレスで複数の認証方法を許可（メール/パスワード + Google など）
+  account: {
+    accountLinking: {
+      enabled: true,
+    },
+  },
+
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7日間
     updateAge: 60 * 60 * 24, // 1日ごとに更新

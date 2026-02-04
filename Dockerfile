@@ -1,6 +1,6 @@
 FROM node:24
 
-WORKDIR /app
+WORKDIR /front
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 

@@ -38,19 +38,12 @@ export function SignInForm() {
     router.push('/')
   }
 
-  // const signInWithGoogle = async () => {
-  //   await authClient.signIn.social({
-  //     provider: 'google',
-  //     callbackURL: '/',
-  //   })
-  // }
-
-  // const signInWithGithub = async () => {
-  //   await authClient.signIn.social({
-  //     provider: 'github',
-  //     callbackURL: '/',
-  //   })
-  // }
+  const signInWithGoogle = async () => {
+    await authClient.signIn.social({
+      provider: 'google',
+      callbackURL: '/',
+    })
+  }
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -111,12 +104,8 @@ export function SignInForm() {
         </div>
 
         <div className="flex flex-col w-full gap-3">
-          <Button type="button" className="text-sm cursor-pointer" onClick={() => {}}>
+          <Button type="button" className="text-sm cursor-pointer" onClick={signInWithGoogle}>
             Continue with Google
-          </Button>
-
-          <Button type="button" className="text-sm cursor-pointer" onClick={() => {}}>
-            Continue with Github
           </Button>
         </div>
       </CardFooter>
